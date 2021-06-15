@@ -7,26 +7,15 @@ import timber.log.Timber
 
 class App : Application() {
 
-
-
-// TODO: все в активити
-//    val dateView = AndroidDateView() //???? Создать dateView в активити
-//
-//    private val saveDateInteractor = SaveDateInteractor(dateStorage)
-//
-//    private val saveResultPresenter = SaveResultPresenter(dateView)
-//
-//    val saveDateController = SaveDateController(saveDateInteractor, saveResultPresenter)
-
-    companion object {
-        lateinit var dateStorage: DateStorage
-            private set
-    }
+//    companion object {
+//        lateinit var dateStorage: DateStorage
+//            private set
+//    }
 
     override fun onCreate() {
         super.onCreate()
 
-        dateStorage = DateSharedPreferenceStorage(MainActivity())
+//        dateStorage = DateSharedPreferenceStorage(MainActivity())
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
