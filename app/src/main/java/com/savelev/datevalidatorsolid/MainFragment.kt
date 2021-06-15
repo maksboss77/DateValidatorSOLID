@@ -45,7 +45,12 @@ class MainFragment : Fragment(), DateView {
         initConfigDI()
 
         binding.saveDate.setOnClickListener {
-            myPresenter.publishEvent(SaveDateClicked(day, month, year))
+            try {
+                myPresenter.publishEvent(SaveDateClicked(day, month, year))
+            } catch (e: NumberFormatException) {
+                Toast.makeText(requireContext(), "NumberFormatException!", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -67,7 +72,6 @@ class MainFragment : Fragment(), DateView {
         initDateController.initDate()
 
         myPresenter.addListener(saveDateController::onSaveClicked)
-        //createEvent()
     }
 
     override var day: String

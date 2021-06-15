@@ -29,9 +29,14 @@ class SaveDateController(
     fun onSaveClicked(saveDateClicked: SaveDateClicked) {
         // отображение объекта из представления в объект из бизнес правил
         // надо ли - хороший вопрос
-        val res = saveDateInteractor.saveDate(
-            SaveDateRequest(saveDateClicked.day.toInt(), saveDateClicked.month.toInt(), saveDateClicked.year.toInt())
-        )
+        val res =
+            saveDateInteractor.saveDate( //FIXME: вот тут возможно исключение NumberFormatException
+                SaveDateRequest(
+                    saveDateClicked.day.toInt(),
+                    saveDateClicked.month.toInt(),
+                    saveDateClicked.year.toInt()
+                )
+            )
         saveResultPresenter.showSaveResult(res)
     }
 
