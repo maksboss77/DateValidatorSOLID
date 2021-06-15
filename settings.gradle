@@ -1,0 +1,3 @@
+rootProject.name = "DateValidatorSOLID"
+include ':app'
+include ':date-saver-core'

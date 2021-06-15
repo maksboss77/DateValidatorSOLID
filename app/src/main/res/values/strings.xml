@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DateValidatorSOLID</string>
+    <string name="day_input">Введите день</string>
+    <string name="input_month">Введите месяц</string>
+    <string name="input_year">Введите год</string>
+    <string name="save_date">Сохранить дату</string>
+</resources>
