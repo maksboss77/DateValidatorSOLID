@@ -23,10 +23,11 @@ class MainFragment : Fragment(), DateView {
         fun newInstance() = MainFragment()
     }
 
+    private lateinit var saveDateController: SaveDateController
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val myPresenter = MyPresenter<SaveDateClicked>()
+//    private val myPresenter = MyPresenter<SaveDateClicked>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +47,9 @@ class MainFragment : Fragment(), DateView {
 
         binding.saveDate.setOnClickListener {
             try {
-                myPresenter.publishEvent(SaveDateClicked(day, month, year))
+                val saveDateClicked = SaveDateClicked(day, month, year)
+//                myPresenter.publishEvent(saveDateClicked)
+                saveDateController.onSaveClicked(saveDateClicked)
             } catch (e: NumberFormatException) {
                 Toast.makeText(requireContext(), "NumberFormatException!", Toast.LENGTH_SHORT)
                     .show()
@@ -66,12 +69,13 @@ class MainFragment : Fragment(), DateView {
 
         val saveResultPresenter = SaveResultPresenter(this)
 
-        val saveDateController = SaveDateController(saveDateInteractor, saveResultPresenter)
+
+        saveDateController = SaveDateController(saveDateInteractor, saveResultPresenter)
 
 //        dateStorage.init() не нужно
         initDateController.initDate()
 
-        myPresenter.addListener(saveDateController::onSaveClicked)
+//        myPresenter.addListener(saveDateController::onSaveClicked)
     }
 
     override var day: String
