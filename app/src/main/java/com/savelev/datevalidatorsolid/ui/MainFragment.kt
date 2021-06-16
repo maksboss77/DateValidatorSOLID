@@ -1,4 +1,4 @@
-package com.savelev.datevalidatorsolid
+package com.savelev.datevalidatorsolid.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,8 +27,6 @@ class MainFragment : Fragment(), DateView {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
-//    private val myPresenter = MyPresenter<SaveDateClicked>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,13 +40,11 @@ class MainFragment : Fragment(), DateView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO: презентер, который подключается в View
         initConfigDI()
 
         binding.saveDate.setOnClickListener {
             try {
                 val saveDateClicked = SaveDateClicked(day, month, year)
-//                myPresenter.publishEvent(saveDateClicked)
                 saveDateController.onSaveClicked(saveDateClicked)
             } catch (e: NumberFormatException) {
                 Toast.makeText(requireContext(), "NumberFormatException!", Toast.LENGTH_SHORT)
@@ -69,13 +65,9 @@ class MainFragment : Fragment(), DateView {
 
         val saveResultPresenter = SaveResultPresenter(this)
 
-
         saveDateController = SaveDateController(saveDateInteractor, saveResultPresenter)
 
-//        dateStorage.init() не нужно
         initDateController.initDate()
-
-//        myPresenter.addListener(saveDateController::onSaveClicked)
     }
 
     override var day: String

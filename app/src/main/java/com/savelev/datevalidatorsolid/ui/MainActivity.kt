@@ -1,7 +1,8 @@
-package com.savelev.datevalidatorsolid
+package com.savelev.datevalidatorsolid.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.savelev.datevalidatorsolid.R
 
 class MainActivity : AppCompatActivity() {
 

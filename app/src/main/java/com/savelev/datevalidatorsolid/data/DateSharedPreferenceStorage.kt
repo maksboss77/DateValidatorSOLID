@@ -3,7 +3,6 @@ package com.savelev.datevalidatorsolid.data
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import com.savelev.datevalidatorsolid.MainActivity
 import pro.azhidkov.solid.date.domain.Date
 import pro.azhidkov.solid.date.domain.DateStorage
 import pro.azhidkov.solid.date.domain.DateStoringFailed
